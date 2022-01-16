@@ -10,7 +10,6 @@ services:
       - '3000:3000'
     volumes:
       - '.:/learning-management'
-      - bundle:/usr/local/bundle
     environment:
       - 'DATABASE_PASSWORD=postgres'
     tty: true
@@ -30,13 +29,13 @@ services:
       - 'POSTGRES_PASSWORD=postgres'
       - 'POSTGRES_HOST_AUTH_METHOD=trust'
   
-  webpacker:
+    webpacker:
     build: .
     volumes:
-      - '.:/learning-management'
+      - .:/myapp
       - bundle:/usr/local/bundle
     command: ./bin/webpack-dev-server
     environment:
-      WEBPACKER_DEV_SERVER_HOST: webpacker
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
     ports:
       - "3035:3035"

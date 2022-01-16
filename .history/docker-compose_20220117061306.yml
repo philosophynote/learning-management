@@ -10,7 +10,6 @@ services:
       - '3000:3000'
     volumes:
       - '.:/learning-management'
-      - bundle:/usr/local/bundle
     environment:
       - 'DATABASE_PASSWORD=postgres'
     tty: true
