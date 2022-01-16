@@ -14,6 +14,5 @@ RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && apt-get instal
 ########################################################################
 WORKDIR /learning-management
 COPY Gemfile Gemfile.lock /learning-management
-RUN bundle install
-RUN yarn install --check-files
-RUN bundle exec rails webpacker:compile
+RUN bundle install \
+    yarn install --check-files 
