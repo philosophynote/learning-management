@@ -10,16 +10,15 @@ services:
       - '3000:3000'
     volumes:
       - '.:/learning-management'
+      - bundle:/usr/local/bundle
     environment:
       - 'DATABASE_PASSWORD=postgres'
-      - webpacker
     tty: true
     stdin_open: true
     depends_on:
       - db
     links:
       - db
-      
 
   db:
     image: postgres
@@ -37,8 +36,6 @@ services:
       - '.:/learning-management'
     command: ./bin/webpack-dev-server
     environment:
-      NODE_ENV: development
-      RAILS_ENV: development
-      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+      WEBPACKER_DEV_SERVER_HOST: webpacker
     ports:
       - "3035:3035"
