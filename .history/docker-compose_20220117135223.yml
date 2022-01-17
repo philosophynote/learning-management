@@ -12,7 +12,7 @@ services:
       - '.:/learning-management'
     environment:
       - 'DATABASE_PASSWORD=postgres'
-      - 'WEBPACKER_DEV_SERVER_HOST: webpacker'
+      - 'WEBPACKER_DEV_SERVER_HOST: webpacker
     tty: true
     stdin_open: true
     depends_on:
