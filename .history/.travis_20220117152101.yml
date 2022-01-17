@@ -8,8 +8,8 @@ before_install:
 
 script:
   - docker-compose run --rm web yarn install
-  - docker-compose run --rm web rails webpacker:install
-  - docker-compose run --rm web rails webpacker:compile
+  - docker-compose exec --env 'RAILS_ENV=test' web rails webpacker:install
+  - docker-compose exec --env 'RAILS_ENV=test' web rails webpacker:compile
   - docker-compose exec --env 'RAILS_ENV=test' web rails db:create
   - docker-compose exec --env 'RAILS_ENV=test' web rails db:migrate
   - docker-compose exec --env 'RAILS_ENV=test' web rails test
