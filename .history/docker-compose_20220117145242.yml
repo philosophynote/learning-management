@@ -11,8 +11,9 @@ services:
     volumes:
       - '.:/learning-management'
     environment:
+      WEBPACKER_DEV_SERVER_HOST: webpacker
       - 'DATABASE_PASSWORD=postgres'
-      - WEBPACKER_DEV_SERVER_HOST: webpacker
+      - 
     tty: true
     stdin_open: true
     depends_on:

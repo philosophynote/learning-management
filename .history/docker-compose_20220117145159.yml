@@ -12,7 +12,7 @@ services:
       - '.:/learning-management'
     environment:
       - 'DATABASE_PASSWORD=postgres'
-      - WEBPACKER_DEV_SERVER_HOST: webpacker
+      - WEBPACKER_DEV_SERVER_HOST: webpacker'
     tty: true
     stdin_open: true
     depends_on:
@@ -39,6 +39,6 @@ services:
     environment:
       NODE_ENV: development
       RAILS_ENV: development
-      WEBPACKER_DEV_SERVER_HOST: "0.0.0.0"
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
     ports:
       - "3035:3035"
