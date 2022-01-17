@@ -10,6 +10,7 @@ before_script:
   - docker-compose exec --env 'RAILS_ENV=test' web rails webpacker:install
   - docker-compose exec --env 'RAILS_ENV=test' web rails webpacker:compile
   
+
 script:
   - docker-compose exec --env 'RAILS_ENV=test' web rails db:create
   - docker-compose exec --env 'RAILS_ENV=test' web rails db:migrate
