@@ -25,7 +25,7 @@ services:
     image: postgres
     platform: linux/arm64/v8
     volumes:
-      - 'db-data:/var/lib/postgresql/data'
+      - 'db-data:/var/lib/postgre/data'
     environment:
       - 'POSTGRES_USER=postgres'
       - 'POSTGRES_PASSWORD=postgres'
