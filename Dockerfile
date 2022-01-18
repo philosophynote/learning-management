@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
 # Node.jsをインストール
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && apt-get install -y nodejs
 ########################################################################
+RUN gem install bundler
 WORKDIR /learning-management
 COPY Gemfile Gemfile.lock /learning-management/
 RUN bundle install
