@@ -1,0 +1,52 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* universal */
+
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+/* toppage背景 */
+.topheader{
+  position: relative;
+}
+
+header video{
+  object-fit: cover;
+  object-position: center top;
+  opacity: var(--video-opacity);
+  width: 100vw;
+  height: 100vh;
+  z-index: -100;
+}
+
+.topheader{
+  position: absolute;
+  z-index: 100;
+}
+
+.topheader .container{
+  position: relative;
+  z-index: 100;
+}
+
+.bgc{
+  background-color: #f8f8f8;
+}

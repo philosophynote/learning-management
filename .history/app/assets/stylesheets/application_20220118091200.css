@@ -1,0 +1,27 @@
+/* toppage背景 */
+.topheader{
+  position: relative;
+}
+
+header video{
+  object-fit: cover;
+  object-position: center top;
+  opacity: var(--video-opacity);
+  width: 100vw;
+  height: 100vh;
+  z-index: -100;
+}
+
+.topheader{
+  position: absolute;
+  z-index: 100;
+}
+
+.topheader .container{
+  position: relative;
+  z-index: 100;
+}
+
+.bgc{
+  background-color: #f8f8f8;
+}
