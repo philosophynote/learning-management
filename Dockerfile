@@ -17,7 +17,11 @@ WORKDIR /learning-management
 COPY Gemfile Gemfile.lock /learning-management/
 RUN bundle install
 RUN yarn install --check-files
-RUN yarn global add mdb-ui-kit
+RUN yarn global add mdb-ui-kit \
+    jquery \
+    bootstrap \
+    popper.js \
+    @popperjs/core
 RUN bundle exec rails webpacker:compile
 
 
