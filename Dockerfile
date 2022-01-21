@@ -1,8 +1,11 @@
-FROM ruby:3.0.0
+FROM ruby:2.7.4
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpq-dev \
-    postgresql-client 
+    postgresql-client \
+    nodejs
 ########################################################################
 # yarnパッケージ管理ツールをインストール
 RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
@@ -10,15 +13,14 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
     apt-get update && apt-get install -y yarn
 # Node.jsをインストール
-RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && apt-get install -y nodejs
+# RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && apt-get install -y nodejs
 ########################################################################
 RUN gem install bundler
 WORKDIR /learning-management
 COPY Gemfile Gemfile.lock /learning-management/
 RUN bundle install
 RUN yarn install --check-files
-RUN yarn global add mdb-ui-kit \
-    jquery \
+RUN yarn add jquery \
     bootstrap \
     popper.js \
     @popperjs/core

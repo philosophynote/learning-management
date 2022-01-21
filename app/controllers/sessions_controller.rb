@@ -7,9 +7,8 @@ class SessionsController < ApplicationController
     if user &. authenticate(params[:session][:password])
       log_in user
       # session_helperよりremember関数を呼び出す
-      
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)  
-      redirect_to user
+      redirect_back_or user
     else
       flash.now[:danger] = "メールアドレスかパスワードが間違っています"
       render 'new'
