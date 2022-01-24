@@ -77,6 +77,8 @@ test:
 # URL environment variable explicitly:
 #
 production:
+  <<: *default
+  host: db
   url: <%= ENV['DATABASE_URL'] %>
 #
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
