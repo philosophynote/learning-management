@@ -17,8 +17,8 @@ services:
     stdin_open: true
     depends_on:
       - db
-    links:
-      - db
+    networks:
+      - net
       
 
   db:
@@ -32,6 +32,8 @@ services:
       - 'POSTGRES_HOST_AUTH_METHOD=trust'
     ports:
       - '5432:5432'
+    networks:
+      - net
   
   webpacker:
     build: .
@@ -44,3 +46,8 @@ services:
       - 'WEBPACKER_DEV_SERVER_HOST="0.0.0.0"'
     ports:
       - "3035:3035"
+    networks:
+      - net
+
+networks:
+  net:
