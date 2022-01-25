@@ -4,12 +4,11 @@ services: docker
 
 before_install:
   - docker-compose up --build -d
-  - docker-compose run --rm web yarn install
-  - docker-compose run --rm web rails webpacker:compile
   - docker login -u "$HEROKU_USERNAME" -p "$HEROKU_API_KEY" registry.heroku.com
-  - docker-compose up -d
 
 script:
+  - docker-compose run --rm web yarn install
+  - docker-compose run --rm web rails webpacker:compile
   - docker-compose exec --env 'RAILS_ENV=test' web rails db:create
   - docker-compose exec --env 'RAILS_ENV=test' web rails db:migrate
   - docker-compose exec --env 'RAILS_ENV=test' web rails test

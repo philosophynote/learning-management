@@ -11,8 +11,8 @@ services:
     volumes:
       - '.:/learning-management'
     environment:
-      DATABASE_PASSWORD: postgres
-      WEBPACKER_DEV_SERVER_HOST: webpacker
+      - 'DATABASE_PASSWORD = postgres'
+      - 'WEBPACKER_DEV_SERVER_HOST = webpacker'
     tty: true
     stdin_open: true
     depends_on:
@@ -27,11 +27,11 @@ services:
     volumes:
       - 'db-data:/var/lib/postgresql/data'
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_HOST_AUTH_METHOD: trust
+      - 'POSTGRES_USER = postgres'
+      - 'POSTGRES_PASSWORD = postgres'
+      - 'POSTGRES_HOST_AUTH_METHOD = trust'
     ports:
-      - 5432:5432
+      - '5432:5432'
   
   webpacker:
     build: .
@@ -39,8 +39,8 @@ services:
       - '.:/learning-management'
     command: ./bin/webpack-dev-server
     environment:
-      NODE_ENV: development
-      RAILS_ENV: development
-      WEBPACKER_DEV_SERVER_HOST: "0.0.0.0"
+      - 'NODE_ENV = development'
+      - 'RAILS_ENV = development'
+      - 'WEBPACKER_DEV_SERVER_HOST = "0.0.0.0"'
     ports:
       - "3035:3035"
