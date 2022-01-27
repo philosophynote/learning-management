@@ -3,6 +3,7 @@ class UsersController < ApplicationController
                                           :following, :followers]
   before_action :correct_user,     only: [:edit, :update]
   before_action :admin_user,       only: :destroy
+  before_action :set_q  ,  only: [:index, :search]
 
   def new
     @user = User.new
@@ -62,6 +63,10 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  def search  
+    @results = @q.result
+  end
+
   private 
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
@@ -76,5 +81,13 @@ class UsersController < ApplicationController
     # 管理者かどうか確認
     def admin_user
       redirect_to(root_url) unless current_user.admin?
+    end
+
+    #ユーザーモデルで検索
+    def set_q
+      # params[:q]はビューより受け取る
+      # ransackで検索
+      @q = User.ransack(params[:q])
+      # params.require(@q).permit(:name_cont)
     end
 end

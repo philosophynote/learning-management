@@ -1,0 +1,16 @@
+<% provide(:title, 'User Search Result') %>
+<h1>検索結果</h1>
+
+<%= link_to 'ユーザ一覧に戻る', users_path %>
+<br>
+<% unless @results.empty?%>
+    <ul class="users">
+    <%= render @results %>
+    </ul>
+<% else %>
+    <p>
+        ユーザーが見つかりませんでした。<br>
+        入力内容を確認してください。
+    </p>
+<% end %>
+
