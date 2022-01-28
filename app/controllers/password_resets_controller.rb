@@ -35,9 +35,7 @@ class PasswordResetsController < ApplicationController
     end
   end
 
-  def password_reset_expired?
-    reset_sent_at < 2.hours.ago
-  end
+
 
   private
     def user_params
@@ -59,6 +57,13 @@ class PasswordResetsController < ApplicationController
     def check_expiration
       if @user.password_reset_expired?
         flash[:danger] = "パスワードが期限切れです"
+        redirect_to new_password_reset_url
+      end
+    end
+    # トークンが期限切れかどうか確認する
+    def check_expiration
+      if @user.password_reset_expired?
+        flash[:danger] = "Password reset has expired."
         redirect_to new_password_reset_url
       end
     end
