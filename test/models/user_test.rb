@@ -60,7 +60,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "authenticated? should return false for a user with nil digest" do
     # current_userがいない場合にfalseが返るか？
-    assert_not @user.authenticated?('')
+    assert_not @user.authenticated?(:remember,'')
   end
 
   test "associated microposts should be destroyed" do
