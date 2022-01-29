@@ -23,7 +23,7 @@ services:
 
   db:
     image: postgres
-    platform: linux/amd64
+    platform: linux/arm64/v8
     volumes:
       - 'db-data:/var/lib/postgresql/data'
     environment:
